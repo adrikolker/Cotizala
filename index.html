@@ -1,0 +1,303 @@
+<!-- wp:shortcode -->
+[av_section min_height='' min_height_px='500px' padding='default' shadow='no-border-styling' bottom_border='no-border-styling' bottom_border_diagonal_color='#333333' bottom_border_diagonal_direction='' bottom_border_style='' custom_margin='0px' custom_margin_sync='true' custom_arrow_bg='' id='' color='main_color' background='bg_color' custom_bg='#e5e5e5' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='http://www.cotizala.com/wp-content/uploads/2019/10/fondo_multicotizador_masbrillo.jpg' attachment='1028' attachment_size='full' attach='parallax' position='top left' repeat='no-repeat' video='' video_ratio='16:9' overlay_opacity='0.5' overlay_color='' overlay_pattern='' overlay_custom_pattern='' av_element_hidden_in_editor='0' av_uid='av-k1az4xw5']
+
+[av_heading heading='COTIZÁ' tag='h1' link_apply='' link='manually,http://' link_target='' style='blockquote modern-quote modern-centered' size='5vw' subheading_active='' subheading_size='15' margin='' padding='10' color='custom-color-heading' custom_font='#ffffff' custom_class='' admin_preview_bg='' av-desktop-hide='' av-medium-hide='' av-small-hide='' av-mini-hide='' av-medium-font-size-title='' av-small-font-size-title='' av-mini-font-size-title='' av-medium-font-size='' av-small-font-size='' av-mini-font-size='' av_uid='av-2yq6w9'][/av_heading]
+
+[av_headline_rotator before_rotating='' after_rotating='' interval='5' animation='fade' margin='100' margin_sync='true' tag='h1' size='5vw' align='center' custom_title='#ffffff' av-medium-font-size-title='' av-small-font-size-title='' av-mini-font-size-title='' av_uid='av-k1723o5z' admin_preview_bg='']
+[av_rotator_item title='El Seguro de tu Auto' link='' linktarget='' custom_title='#ffffff' av_uid='av-1flkz']
+[av_rotator_item title='El Seguro de tu Moto' link='' linktarget='' custom_title='#ffffff' av_uid='av-3mqb']
+[/av_headline_rotator]
+
+[av_hr class='custom' height='50' shadow='no-shadow' position='center' custom_border='av-border-none' custom_width='50px' custom_border_color='' custom_margin_top='5px' custom_margin_bottom='5px' icon_select='no' custom_icon_color='' icon='ue808' font='entypo-fontello' av_uid='av-k1qltv28' admin_preview_bg='']
+
+[av_two_third first min_height='' vertical_alignment='av-align-top' space='' margin='0px' margin_sync='true' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' padding_sync='true' highlight_size='1.1' border='' border_color='' radius='0px' radius_sync='true' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' attachment='' attachment_size='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-1652n']
+
+[av_codeblock wrapper_element='' wrapper_element_attributes='' codeblock_type='' av_uid='av-k1iduifh']
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Cotizador</title>
+<link href="css/estilos-cotizador.css" rel="stylesheet" type="text/css" />
+<script>
+    window.console = window.console || function(t) {};
+    window.open = function(){ console.log('window.open is disabled.'); };
+    window.print = function(){ console.log('window.print is disabled.'); };
+    // Support hover state for mobile.
+    if (false) {
+      window.ontouchstart = function(){};
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="application/json" data-db-infoauto-instance="">    { endPoint: 'http://comun.visred.com.ar/infoauto/api/v1/' }</script>
+<script type="text/javascript" src="http://comun.visred.com.ar/InfoautoPlugin/js/infoauto-selects.js?55"></script>
+<script type="application/json" data-db-infomoto-instance="">    { endPoint: 'http://comun.visred.com.ar/infomoto/api/v1/' }</script>
+<script type="text/javascript" src="http://comun.visred.com.ar/InfomotoPlugin/js/infomoto-selects.js?55"></script>
+
+<script type="text/javascript">
+	$.getJSON('https://staging.testing.visred.com.ar/api/v1/implementos', function (data) {
+		for (i in data) {
+			$('#select-implemento').append($('<option>', {
+			    value: data[i].id,
+			    text: data[i].nombre
+			}));
+		}
+	});
+</script>
+
+</head>
+
+<body>
+	
+  <div id="container">
+		
+	    <input id="tab-1" type="radio" name="tab-group" checked="checked">
+	    <label for="tab-1"><img src="img/automotor-icono.png" width="28" height="16" alt="Automotor" /> Automotor</label>
+	    <input id="tab-2" type="radio" name="tab-group" >
+	    <label for="tab-2"><img src="img/motos-icono.png" width="20" height="16" alt="Motos" /> Motos</label>
+	    <input id="tab-3" type="radio" name="tab-group" >
+	    <label for="tab-3"><img src="img/patrimonial-icono.png" width="20" height="16" alt="Patrimonial" /> Patrimonial</label>
+	    <div id="content">
+	        <div id="content-1">
+		      <form id="form-cotizadores-auto" action="https://productores.visred.com.ar/cotizala/" method="post" target="_blank">
+		         <div id="bloque2-auto">
+		            <div id="bloque-auto">
+		               <p>Marca</p>
+<div class="form-group col-sm-6"><label class="col-sm-4 control-label required" for="visred_bundle_productoresbundle_autocotizacion_infoauto_marca_select">Marca</label>
+					<div class="col-sm-8">
+						<select id="visred_bundle_productoresbundle_autocotizacion_infoauto_marca_select" 
+						name="visred_bundle_productoresbundle_autocotizacion[infoauto_marca_select]" data-infoauto-marca-select="" tabindex="1" required="required" class="form-control">
+					</select>
+				</div>
+			</div>
+
+
+
+    
+		            </div>
+		            <div id="bloque-auto">
+		               <p>Año</p>
+		               <select name="visred_bundle_productoresbundle_autocotizacion[anio_select]" class="anio" data-db-infoauto-anio=""></select>    
+		            </div>
+		            <div id="bloque-auto">
+		               <p>Modelo</p>
+		               <select name="visred_bundle_productoresbundle_autocotizacion[infoauto_grupo_select]" class="modelo" data-db-infoauto-grupo=""></select>    
+		            </div>
+		            <div id="bloque-auto">
+		               <p>Versión</p>
+		               <select name="visred_bundle_productoresbundle_autocotizacion[infoauto_codigo_select]" class="version" data-db-infoauto-modelo=""></select>    
+		            </div>
+		            <div id="bloque-auto">
+		               <p>¿Tiene GNC?</p>
+		               <select required="required" name="visred_bundle_productoresbundle_autocotizacion[tiene_gnc]" class="gnc">
+		                  <option value="0">No</option>
+		                  <option value="1">Si</option>
+		               </select>
+		               <br /><br /><br />    
+		            </div>
+		         </div>
+		         <div id="bloque2-auto">
+		            <div id="bloque-auto">
+		               <!--<p>Sexo</p>-->
+		               <select required="required" name="visred_bundle_productoresbundle_autocotizacion[sexo]" class="sexo">
+		                  <option value="m">Masculino</option>
+		                  <option value="f">Femenino</option>
+		               </select>
+		            </div>
+		            <div id="bloque-auto">
+		               <!--<p>Estado civil</p>-->
+		               <select required="required" name="visred_bundle_productoresbundle_autocotizacion[estado_civil]" class="civil">
+		                  <option value="soltero">Soltero/a</option>
+		                  <option value="casado">Casado/a</option>
+		                  <option value="divorciado">Divorciado/a</option>
+		                  <option value="viudo">Viudo/a</option>
+		               </select>
+		            </div>
+		            <div id="bloque-auto">
+		               <!--<p>Edad</p>-->
+		               <input type="hidden" required="required" max="99" min="0"  value="30" name="visred_bundle_productoresbundle_autocotizacion[edad]" class="edad">    
+		            </div>
+		            <div id="bloque-auto">
+		               <p>Código postal</p>
+		               <input name="visred_bundle_productoresbundle_autocotizacion[codigo_postal]" type="text" class="cp" required="required">    
+		            </div>
+		            <div id="bloque-auto">
+		               <p>Email</p>
+		               <input type="email" required="required" name="visred_bundle_productoresbundle_autocotizacion[email]" class="email">    
+		            </div>
+		            <div id="bloque-auto">
+		               <p>Teléfono</p>
+		               <input name="visred_bundle_productoresbundle_autocotizacion[tel_area]" type="text" class="area" required="required">    <input name="visred_bundle_productoresbundle_autocotizacion[tel_numero]" type="text" class="numero" required="required">    <br /><br /><br />    
+		            </div>
+		         </div>
+		         <div id="bloque2-auto">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_autocotizacion[infoauto_marca]" data-db-infoauto-marca-hidden="">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_autocotizacion[anio]" data-db-infoauto-anio-hidden="">    
+		         	<input type="hidden" name="visred_bundle_productoresbundle_autocotizacion[infoauto_grupo]" data-db-infoauto-grupo-hidden="">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_autocotizacion[infoauto_codigo]" data-db-infoauto-modelo-hidden="">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_autocotizacion[infoauto_tipo]" data-db-infoauto-tipo-hidden="" value="">
+		         	<button name="visred_bundle_productoresbundle_autocotizacion[cotizar]" type="submit" class="button02" style="cursor:pointer;">COTIZAR AHORA</button>
+		         </div>
+		      </form>
+	        </div>
+	        
+	        <div id="content-2">
+		      <form id="form-cotizadores-moto" action="https://productores.visred.com.ar/gbalea/motos/" method="post" target="_blank">
+		         <div id="bloque2-moto">
+		            <div id="bloque-moto">
+		               <p>Marca</p>
+		               <select name="visred_bundle_productoresbundle_motocotizacion[infomoto_marca_select]" data-db-infomoto-marca="" class="marca"></select>    
+		            </div>
+		            <div id="bloque-moto">
+		               <p>Año</p>
+		               <select name="visred_bundle_productoresbundle_motocotizacion[anio_select]" class="anio" data-db-infomoto-anio=""></select>    
+		            </div>
+		            <div id="bloque-moto">
+		               <p>Modelo</p>
+		               <select name="visred_bundle_productoresbundle_motocotizacion[infomoto_grupo_select]" class="modelo" data-db-infomoto-grupo=""></select>    
+		            </div>
+		            <div id="bloque-moto">
+		               <p>Versión</p>
+		               <select name="visred_bundle_productoresbundle_motocotizacion[infomoto_codigo_select]" class="version" data-db-infomoto-modelo=""></select>    
+		            </div>
+		            
+		         </div>
+		         <div id="bloque2-moto">
+		            <div id="bloque-moto">
+		               <!--<p>Sexo</p>-->
+		               <select required="required" name="visred_bundle_productoresbundle_motocotizacion[sexo]" class="sexo">
+		                  <option value="m">Masculino</option>
+		                  <option value="f">Femenino</option>
+		               </select>
+		            </div>
+		            <div id="bloque-moto">
+		               <!--<p>Estado civil</p>-->
+		               <select required="required" name="visred_bundle_productoresbundle_motocotizacion[estado_civil]" class="civil">
+		                  <option value="soltero">Soltero/a</option>
+		                  <option value="casado">Casado/a</option>
+		                  <option value="divorciado">Divorciado/a</option>
+		                  <option value="viudo">Viudo/a</option>
+		               </select>
+		            </div>
+		            <div id="bloque-moto">
+		               <!--<p>Edad</p>-->
+		               <input type="hidden" required="required" max="99" min="0"  value="30" name="visred_bundle_productoresbundle_motocotizacion[edad]" class="edad">    
+		            </div>
+		            <div id="bloque-moto">
+		               <p>Código postal</p>
+		               <input name="visred_bundle_productoresbundle_motocotizacion[codigo_postal]" type="text" class="cp" required="required">    
+		            </div>
+		            <div id="bloque-moto">
+		               <p>Email</p>
+		               <input type="email" required="required" name="visred_bundle_productoresbundle_motocotizacion[email]" class="email">    
+		            </div>
+		            <div id="bloque-moto">
+		               <p>Teléfono</p>
+		               <input name="visred_bundle_productoresbundle_motocotizacion[tel_area]" type="text" class="area" required="required">    <input name="visred_bundle_productoresbundle_motocotizacion[tel_numero]" type="text" class="numero" required="required">    <br /><br /><br />    
+		            </div>
+		         </div>
+		         <div id="bloque2-moto">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_motocotizacion[infomoto_marca]" data-db-infomoto-marca-hidden="">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_motocotizacion[anio]" data-db-infomoto-anio-hidden="">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_motocotizacion[infomoto_grupo]" data-db-infomoto-grupo-hidden="">
+		         	<input type="hidden" name="visred_bundle_productoresbundle_motocotizacion[infomoto_codigo]" data-db-infomoto-modelo-hidden="">
+		         	<button name="visred_bundle_productoresbundle_motocotizacion[cotizar]" type="submit" class="button02" style="cursor:pointer;">COTIZAR AHORA</button>
+		         </div>
+		      </form>   
+	        </div>
+	        
+	        <div id="content-3">
+	        	<form id="form-cotizadores-patrimonial" action="https://productores.visred.com.ar/gbalea/patrimonial/" method="post" target="_blank">
+		         <div id="bloque2-patrimonial">
+		            <div id="bloque-patrimonial">
+		               <p>Implemento</p>
+		               <select id="select-implemento" name="visred_bundle_productoresbundle_patrimonialcotizacion[implemento_id]" class="implemento"></select>    
+		            </div>
+		            <div id="bloque-patrimonial">
+		               <p>Año</p>
+		               <input type="text" required="required" name="visred_bundle_productoresbundle_patrimonialcotizacion[implemento_modelo]" class="anio">    
+		            </div>
+		            <div id="bloque-patrimonial">
+		               <p>Suma Asegurada</p>
+		               <input type="text" required="required" name="visred_bundle_productoresbundle_patrimonialcotizacion[implemento_suma_asegurada]" class="suma">    
+		            </div>
+
+		         </div>
+		        
+		         <div id="bloque2-patrimonial">
+		         	<button name="visred_bundle_productoresbundle_patrimonialcotizacion[cotizar]" type="submit" class="button02" style="cursor:pointer;">COTIZAR AHORA</button>
+		         </div>
+		      </form>  
+	        </div>
+	    </div>
+	</div>
+<script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+</body>
+</html>
+[/av_codeblock]
+
+[/av_two_third][/av_section][av_section min_height='' min_height_px='500px' padding='default' shadow='no-border-styling' bottom_border='no-border-styling' bottom_border_diagonal_color='#333333' bottom_border_diagonal_direction='' bottom_border_style='' custom_margin='0px' custom_margin_sync='true' custom_arrow_bg='' id='' color='main_color' background='bg_color' custom_bg='#edd5e8' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='http://www.cotizala.com/wp-content/uploads/2019/10/Cotizaciones.jpg' attachment='734' attachment_size='full' attach='parallax' position='center left' repeat='no-repeat' video='' video_ratio='16:9' overlay_opacity='0.5' overlay_color='' overlay_pattern='' overlay_custom_pattern='' av_element_hidden_in_editor='0' av_uid='av-k19x3yjy']
+[av_heading heading='OTRAS COTIZACIONES' tag='h1' link_apply='' link='manually,http://' link_target='' style='blockquote modern-quote modern-centered' size='5vw' subheading_active='' subheading_size='15' margin='' margin_sync='true' padding='10' color='custom-color-heading' custom_font='#ffffff' av-medium-font-size-title='' av-small-font-size-title='' av-mini-font-size-title='' av-medium-font-size='' av-small-font-size='' av-mini-font-size='' av_uid='av-k19x2cfo' admin_preview_bg=''][/av_heading]
+[/av_section]
+
+[av_section min_height='' min_height_px='500px' padding='default' shadow='no-border-styling' bottom_border='no-border-styling' bottom_border_diagonal_color='#333333' bottom_border_diagonal_direction='' bottom_border_style='' custom_margin='0px' custom_margin_sync='true' custom_arrow_bg='' id='' color='main_color' background='bg_color' custom_bg='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' attachment='' attachment_size='' attach='scroll' position='center center' repeat='no-repeat' video='' video_ratio='16:9' overlay_opacity='0.5' overlay_color='' overlay_pattern='' overlay_custom_pattern='' av-medium-hide='aviaTBav-medium-hide' av-small-hide='aviaTBav-small-hide' av-mini-hide='aviaTBav-mini-hide' av_element_hidden_in_editor='0' av_uid='av-k19yn5il']
+[av_one_fifth first min_height='' vertical_alignment='' space='' custom_margin='' margin='0px' row_boxshadow='' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' highlight='' highlight_size='' border='' border_color='' radius='0px' column_boxshadow='' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-1kwjz']
+
+[/av_one_fifth][av_three_fifth min_height='' vertical_alignment='av-align-top' space='' margin='0px' margin_sync='true' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' padding_sync='true' highlight_size='1.1' border='' border_color='' radius='0px' radius_sync='true' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' attachment='' attachment_size='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-15zwj']
+
+[av_textblock size='' font_color='' color='' av-medium-font-size='' av-small-font-size='10' av-mini-font-size='10' av_uid='av-k1i2wyfz' admin_preview_bg='']
+[hover-effect id="697"]
+[/av_textblock]
+
+[/av_three_fifth][av_one_fifth min_height='' vertical_alignment='' space='' custom_margin='' margin='0px' row_boxshadow='' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' highlight='' highlight_size='' border='' border_color='' radius='0px' column_boxshadow='' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-pk2z']
+
+[/av_one_fifth][av_one_fifth first min_height='' vertical_alignment='' space='' custom_margin='' margin='0px' row_boxshadow='' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' highlight='' highlight_size='' border='' border_color='' radius='0px' column_boxshadow='' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-pk2z']
+
+[/av_one_fifth][av_three_fifth min_height='' vertical_alignment='' space='' custom_margin='' margin='0px' row_boxshadow='' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' highlight='' highlight_size='' border='' border_color='' radius='0px' column_boxshadow='' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-pk2z']
+
+[av_textblock size='' font_color='custom' color='#7c527c' av-medium-font-size='' av-small-font-size='' av-mini-font-size='' av_uid='av-k1qcx7nu' admin_preview_bg='']
+<h3 style="text-align: left;">      HOGAR           VIAJES      ACCIDENTES      BOLSO       BICICLETAS   + SEGUROS                                                    PERSONALES</h3>
+[/av_textblock]
+
+[/av_three_fifth]
+[/av_section]
+
+[av_one_fifth first min_height='' vertical_alignment='' space='' custom_margin='' margin='0px' row_boxshadow='' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' highlight='' highlight_size='' border='' border_color='' radius='0px' column_boxshadow='' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-5b5fb'][/av_one_fifth]
+
+[av_one_fifth min_height='' vertical_alignment='' space='' custom_margin='' margin='0px' row_boxshadow='' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' highlight='' highlight_size='' border='' border_color='' radius='0px' column_boxshadow='' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-4f1en'][/av_one_fifth]
+
+[av_one_fifth min_height='' vertical_alignment='' space='' custom_margin='' margin='0px' row_boxshadow='' row_boxshadow_color='' row_boxshadow_width='10' link='' linktarget='' link_hover='' padding='0px' highlight='' highlight_size='' border='' border_color='' radius='0px' column_boxshadow='' column_boxshadow_color='' column_boxshadow_width='10' background='bg_color' background_color='' background_gradient_color1='' background_gradient_color2='' background_gradient_direction='vertical' src='' background_position='top left' background_repeat='no-repeat' animation='' mobile_breaking='' mobile_display='' av_uid='av-3vfb7']
+[av_content_slider heading='' columns='2' animation='slide' navigation='arrows' autoplay='true' interval='3' font_color='' color='' av-desktop-hide='aviaTBav-desktop-hide' av_uid='av-k1kzeh9l']
+[av_content_slide title='' link='' linktarget='' av_uid='av-exir']
+<h3 style="color: #6f30a0; text-align: center;">HOGAR</h3>
+<h3 style="color: #6f30a0; text-align: center;"><a href="http://www.cotizala.com/cotizaciones/#hogar"><img class="aligncenter wp-image-711" src="http://www.cotizala.com/wp-content/uploads/2019/10/Hogar2.fw_-1-80x80.png" alt="" width="135" height="135" /></a></h3>
+[/av_content_slide]
+[av_content_slide title='' link='' linktarget='' av_uid='av-sz8b']
+<h3 style="color: #6f30a0; text-align: center;">VIAJES</h3>
+<a href="http://www.tusegurodeviaje.net/vendors/cotizala.com"><img class="aligncenter wp-image-710" src="http://www.cotizala.com/wp-content/uploads/2019/10/Viaje2.fw_-80x80.png" alt="" width="135" height="135" /></a>
+[/av_content_slide]
+[av_content_slide title='' link='' linktarget='' av_uid='av-2pgnv']
+<h3 style="color: #6f30a0; text-align: center;">BOLSO</h3>
+<a href="http://www.cotizala.com/cotizaciones/#bolso"><img class="aligncenter wp-image-712" src="http://www.cotizala.com/wp-content/uploads/2019/10/Bolso2.fw_-80x80.png" alt="" width="135" height="135" /></a>
+[/av_content_slide]
+[av_content_slide title='' link='' linktarget='' av_uid='av-80tz']
+<h3 style="color: #6f30a0; text-align: center;">BICICLETAS</h3>
+<a href="http://www.cotizala.com/cotizaciones/#bicicleta"><img class="aligncenter wp-image-707" src="http://www.cotizala.com/wp-content/uploads/2019/10/Bicicleta2.fw_-80x80.png" alt="" width="135" height="135" /></a>
+[/av_content_slide]
+[av_content_slide title='' link='' linktarget='' av_uid='av-1jo3z']
+<h3 style="color: #6f30a0; text-align: center;">ACCIDENTES
+PERSONALES</h3>
+<a href="http://www.cotizala.com/cotizaciones/#accidentes-personales"><img class="aligncenter wp-image-706" src="http://www.cotizala.com/wp-content/uploads/2019/10/Accidentes2.fw_-80x80.png" alt="" width="135" height="135" /></a>
+[/av_content_slide]
+[av_content_slide title='' link='' linktarget='' av_uid='av-x7bb']
+<h3 style="color: #6f30a0; text-align: center;">MAS
+SEGUROS</h3>
+<a href="http://www.cotizala.com/cotizaciones/#av-tab-section-1-6"><img class="aligncenter wp-image-874" src="http://www.cotizala.com/wp-content/uploads/2019/10/Seguros.fw_-180x180.png" alt="" width="135" height="135" /></a>
+[/av_content_slide]
+[/av_content_slider]
+[/av_one_fifth]
+<!-- /wp:shortcode -->
